@@ -1,7 +1,8 @@
 ﻿"use client";
 import { motion } from "framer-motion";
-import Link from "next/link"; // ✅ Added for routing
-import Hero from "../components/Hero";
+import Link from "next/link"; // ✅ added this line
+import Hero from "../../components/Hero";
+
 
 export default function Home() {
   const programData = [
@@ -55,7 +56,7 @@ export default function Home() {
               },
             }}
           >
-            {/* ✅ Hitting Card (now clickable) */}
+            {/* === Hitting card with link === */}
             <Link href="/hitting">
               <motion.div
                 className="group border-2 border-[#FDB827] rounded-xl p-8 bg-[#fefefe] shadow-md hover:shadow-[0_0_20px_#FDB82755] transition-all duration-300 hover:translate-y-[-6px] cursor-pointer"
@@ -66,14 +67,14 @@ export default function Home() {
                   Hitting
                 </h3>
                 <p className="text-[#0A2351] opacity-90 leading-relaxed">
-                  Develop consistent contact, barrel control, and power. Our approach
-                  builds confidence and repeatable swing mechanics through live reps and
-                  situational drills.
+                  Develop consistent contact, barrel control, and power. Our
+                  approach builds confidence and repeatable swing mechanics
+                  through live reps and situational drills.
                 </p>
               </motion.div>
             </Link>
 
-            {/* Player Development Card */}
+            {/* === Player Development card === */}
             <motion.div
               className="group border-2 border-[#FDB827] rounded-xl p-8 bg-[#fefefe] shadow-md hover:shadow-[0_0_20px_#FDB82755] transition-all duration-300 hover:translate-y-[-6px]"
               variants={{
@@ -86,13 +87,13 @@ export default function Home() {
                 Player Development
               </h3>
               <p className="text-[#0A2351] opacity-90 leading-relaxed">
-                Designed for all-around growth — from athletic movement to mental game
-                prep. Learn how to compete, adjust, and perform at every level of
-                competition.
+                Designed for all-around growth — from athletic movement to
+                mental game prep. Learn how to compete, adjust, and perform at
+                every level of competition.
               </p>
             </motion.div>
 
-            {/* Pitching Card */}
+            {/* === Pitching card === */}
             <motion.div
               className="group border-2 border-[#FDB827] rounded-xl p-8 bg-[#fefefe] shadow-md hover:shadow-[0_0_20px_#FDB82755] transition-all duration-300 hover:translate-y-[-6px]"
               variants={{
@@ -105,9 +106,9 @@ export default function Home() {
                 Pitching
               </h3>
               <p className="text-[#0A2351] opacity-90 leading-relaxed">
-                Focused on command, velocity development, and arm health. We build
-                efficient, repeatable movements using video breakdown and modern training
-                concepts.
+                Focused on command, velocity development, and arm health. We
+                build efficient, repeatable movements using video breakdown and
+                modern training concepts.
               </p>
             </motion.div>
           </motion.div>
