@@ -1,0 +1,40 @@
+﻿/* Gold glow animation for the logo */
+@keyframes goldPulse {
+  0% {
+    filter: brightness(1.25) drop-shadow(0 0 20px rgba(253, 184, 39, 0.35));
+  }
+  50% {
+    filter: brightness(1.45) drop-shadow(0 0 40px rgba(253, 184, 39, 0.5));
+  }
+  100% {
+    filter: brightness(1.25) drop-shadow(0 0 20px rgba(253, 184, 39, 0.35));
+  }
+}
+
+.hero-logo {
+  animation: goldPulse 5s ease-in-out infinite;
+}
+
+/* === NEW: background shimmer === */
+@keyframes blueShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero-wrapper {
+  background: linear-gradient(
+    120deg,
+    #42B3E0,
+    #5DC1E9,
+    #42B3E0
+  );
+  background-size: 200% 200%;
+  animation: blueShimmer 18s ease-in-out infinite;
+}
