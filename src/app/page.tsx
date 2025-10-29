@@ -9,7 +9,7 @@ export default function Home() {
       {/* === HERO SECTION === */}
       <Hero />
 
-      {/* === PROGRAMS SECTION (Upgraded, JPG Icons) === */}
+      {/* === PROGRAMS SECTION (Updated with Video Breakdown) === */}
       <section
         id="programs"
         className="py-20 bg-[#42B3E0] text-center overflow-hidden"
@@ -84,7 +84,7 @@ export default function Home() {
               </Link>
             </motion.div>
 
-            {/* --- Group / Team --- */}
+            {/* --- Video Breakdown --- */}
             <motion.div
               className="group bg-white rounded-xl border-2 border-[#FDB827] shadow-lg p-8 flex flex-col items-center transition-all hover:translate-y-[-6px] hover:shadow-[0_0_25px_#FDB82755]"
               initial={{ opacity: 0, y: 30 }}
@@ -93,19 +93,20 @@ export default function Home() {
               viewport={{ once: true, amount: 0.2 }}
             >
               <img
-                src="/icons/group.jpg"
-                alt="Group Training Icon"
+                src="/icons/video.jpg"
+                alt="Video Breakdown Icon"
                 className="w-20 h-20 object-cover mb-4 rounded-md shadow-md"
               />
               <h3 className="text-2xl font-bold text-[#0A2351] mb-3 group-hover:text-[#FDB827] transition-colors">
-                Group / Team Workouts
+                Video Breakdown
               </h3>
               <p className="text-[#0A2351] opacity-90 mb-6 leading-relaxed">
-                Small-group sessions focused on competition, teamwork, and
-                game-speed execution. Custom scheduling available.
+                Personalized video analysis for mechanics, timing, and efficiency.
+                Each breakdown includes slow-motion review, annotations, and
+                feedback focused on measurable improvement and progress tracking.
               </p>
               <Link
-                href="/programs#group"
+                href="/video-breakdown"
                 className="bg-[#0A2351] text-[#FDB827] font-semibold px-6 py-2 rounded-md shadow-md hover:bg-[#FDB827] hover:text-[#0A2351] hover:shadow-[0_0_15px_#FDB82790] transition-all"
               >
                 Learn More
