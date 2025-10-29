@@ -15,18 +15,21 @@ export default function AboutMatt() {
       </motion.h1>
 
       <motion.p
-        className="text-[#0A2351]/90 text-lg max-w-3xl mx-auto leading-relaxed mb-16"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.3, duration: 0.8 }}
-      >
-        Former professional pitcher and dedicated coach, Matt brings years of
-        big-league experience and a passion for player development to MM
-        Baseball. His coaching philosophy blends old-school work ethic with
-        modern analytics to help players build repeatable, game-ready mechanics.
-        Matt’s focus is simple: teach the game, develop the player, and grow the
-        person.
-      </motion.p>
+  className="text-[#0A2351]/90 text-lg max-w-3xl mx-auto leading-relaxed mb-16"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.3, duration: 0.8 }}
+>
+  From big-league clubhouses to local diamonds, Matt Maysey has lived every inch
+  of the game. A former MLB pitcher turned master developer of talent, he builds
+  players the way he once built innings — with intent, intensity, and command.
+  His coaching blends old-school toughness with cutting-edge data, turning raw
+  potential into reliable performance. Matt’s mission:{" "}
+  <span className="font-semibold text-[#0A2351]">
+    teach the game, elevate the player, and shape the person.
+  </span>
+</motion.p>
+
 
       {/* === CARD FLIP AREA === */}
       <motion.div
@@ -56,19 +59,23 @@ export default function AboutMatt() {
         </div>
       </motion.div>
 
-      {/* === CTA === */}
-      <motion.div
-        className="max-w-xl bg-white rounded-xl p-6 shadow-md border-2 border-[#FDB827]"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.0, duration: 0.8 }}
-      >
-        <p className="text-[#0A2351] opacity-90 mb-4">
-          Matt continues to work closely with local athletes, helping them
-          prepare for the next level — from high school competition through
-          collegiate baseball and beyond.
-        </p>
-      </motion.div>
+     {/* === CTA === */}
+<motion.div
+  className="max-w-xl bg-white rounded-xl p-6 shadow-md border-2 border-[#FDB827]"
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 1.0, duration: 0.8 }}
+>
+  <p className="text-[#0A2351] opacity-90 mb-4 leading-relaxed">
+    Matt works hands-on with developing athletes, bridging the gap between
+    potential and performance. Every player he coaches learns more than
+    mechanics — they learn accountability, resilience, and how to compete with
+    intent. His focus is simple: prepare athletes for the next level —
+    technically, mentally, and competitively.
+  </p>
+</motion.div>
+
+      
     </section>
   );
 }
