@@ -40,7 +40,7 @@ export default function PitchingPage() {
           controls
           poster="/videos/pitching_thumbnail.jpg"
           className="w-full h-auto rounded-t-xl"
-          src="/videos/pitching_demo.mov" // add your pitching video clip here
+          src="/videos/pitching_demo.mov"
         />
         <div className="p-6 text-left">
           <h2 className="text-2xl font-bold text-[#0A2351] mb-3">
@@ -60,7 +60,6 @@ export default function PitchingPage() {
             progress tracking on velocity, spin, and strike consistency.
           </p>
 
-          {/* Stat Bar */}
           <div className="mt-6 flex justify-between text-sm text-[#0A2351]/80 font-semibold">
             <span>Velo Gain: +3–6 mph avg</span>
             <span>Command: 70–80% zone rate</span>

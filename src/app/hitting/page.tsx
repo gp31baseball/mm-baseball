@@ -1,119 +1,97 @@
 ﻿"use client";
 import { motion } from "framer-motion";
-import Link from "next/link"; // ✅ added this line
-import Hero from "../../components/Hero";
 
-
-export default function Home() {
-  const programData = [
-    {
-      title: "Hitting",
-      description:
-        "Develop consistent contact, barrel control, and power. Our approach builds confidence and repeatable swing mechanics through live reps and situational drills.",
-    },
-    {
-      title: "Player Development",
-      description:
-        "Designed for all-around growth — from athletic movement to mental game prep. Learn how to compete, adjust, and perform at every level of competition.",
-    },
-    {
-      title: "Pitching",
-      description:
-        "Focused on command, velocity development, and arm health. We build efficient, repeatable movements using video breakdown and modern training concepts.",
-    },
-  ];
-
+export default function HittingPage() {
   return (
-    <>
-      {/* === HERO SECTION === */}
-      <Hero />
-
-      {/* === PROGRAMS SECTION === */}
-      <section
-        id="programs"
-        className="py-20 bg-white text-center overflow-hidden"
+    <section className="min-h-screen bg-gradient-to-b from-[#42B3E0] to-[#2095C6] py-20 px-6 flex flex-col items-center text-center">
+      {/* === HEADER === */}
+      <motion.h1
+        className="text-5xl md:text-6xl font-extrabold text-[#0A2351] mb-4 drop-shadow-[0_3px_4px_rgba(10,35,81,0.25)]"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
       >
-        <motion.div
-          className="max-w-6xl mx-auto px-6"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <h2 className="text-4xl md:text-5xl font-extrabold text-[#0A2351] mb-10 drop-shadow-[0_3px_4px_rgba(10,35,81,0.15)]">
-            Training Programs
+        Hitting Training
+      </motion.h1>
+
+      {/* Tagline */}
+      <motion.p
+        className="text-[#0A2351]/90 text-lg max-w-xl mx-auto mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.8 }}
+      >
+        Building consistent, confident hitters through game-speed reps, mechanical
+        efficiency, and a data-driven approach to contact quality and power.
+      </motion.p>
+
+      {/* === VIDEO SHOWCASE === */}
+      <motion.div
+        className="w-full max-w-xl bg-white rounded-xl shadow-lg overflow-hidden border-2 border-[#FDB827] transition-all hover:shadow-[0_0_25px_rgba(253,184,39,0.5)] mx-auto"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3, duration: 0.8, ease: "easeOut" }}
+      >
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          controls
+          poster="/videos/hitting_thumbnail.jpg"
+          className="w-full h-auto rounded-t-xl"
+          src="/videos/hitting_demo.mov" // your Corey Julks BP clip
+        />
+        <div className="p-6 text-left">
+          <h2 className="text-2xl font-bold text-[#0A2351] mb-3">
+            Program Overview
           </h2>
+          <p className="text-[#0A2351] opacity-90 leading-relaxed">
+            Our hitting program is built around repeatable efficiency — teaching
+            athletes to move with intent, stay balanced through launch, and
+            deliver the barrel on time with adjustability. Training blends
+            mechanical precision with live-situation awareness, developing hitters
+            who can compete confidently at any level.
+          </p>
 
-          <motion.div
-            className="grid md:grid-cols-3 gap-10"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={{
-              hidden: {},
-              visible: {
-                transition: { staggerChildren: 0.2 },
-              },
-            }}
-          >
-            {/* === Hitting card with link === */}
-            <Link href="/hitting">
-              <motion.div
-                className="group border-2 border-[#FDB827] rounded-xl p-8 bg-[#fefefe] shadow-md hover:shadow-[0_0_20px_#FDB82755] transition-all duration-300 hover:translate-y-[-6px] cursor-pointer"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <h3 className="text-2xl font-bold text-[#0A2351] mb-3 group-hover:text-[#FDB827] transition-colors">
-                  Hitting
-                </h3>
-                <p className="text-[#0A2351] opacity-90 leading-relaxed">
-                  Develop consistent contact, barrel control, and power. Our
-                  approach builds confidence and repeatable swing mechanics
-                  through live reps and situational drills.
-                </p>
-              </motion.div>
-            </Link>
+          <p className="text-[#0A2351] opacity-90 leading-relaxed mt-4">
+            Sessions emphasize lower-half sequencing, posture control, and
+            efficient energy transfer. Using high-speed video and measurable
+            feedback, each athlete builds a personal understanding of what
+            creates their best contact quality and power output.
+          </p>
 
-            {/* === Player Development card === */}
-            <motion.div
-              className="group border-2 border-[#FDB827] rounded-xl p-8 bg-[#fefefe] shadow-md hover:shadow-[0_0_20px_#FDB82755] transition-all duration-300 hover:translate-y-[-6px]"
-              variants={{
-                hidden: { opacity: 0, y: 40 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            >
-              <h3 className="text-2xl font-bold text-[#0A2351] mb-3 group-hover:text-[#FDB827] transition-colors">
-                Player Development
-              </h3>
-              <p className="text-[#0A2351] opacity-90 leading-relaxed">
-                Designed for all-around growth — from athletic movement to
-                mental game prep. Learn how to compete, adjust, and perform at
-                every level of competition.
-              </p>
-            </motion.div>
+          <div className="mt-6 flex justify-between text-sm text-[#0A2351]/80 font-semibold">
+            <span>Bat Speed: +5–8 mph avg gain</span>
+            <span>Contact Quality: 90–95 %</span>
+            <span>Launch: 10–18 ° range</span>
+            <span>Carry: +25 ft avg gain</span>
+          </div>
+        </div>
+      </motion.div>
 
-            {/* === Pitching card === */}
-            <motion.div
-              className="group border-2 border-[#FDB827] rounded-xl p-8 bg-[#fefefe] shadow-md hover:shadow-[0_0_20px_#FDB82755] transition-all duration-300 hover:translate-y-[-6px]"
-              variants={{
-                hidden: { opacity: 0, y: 40 },
-                visible: { opacity: 1, y: 0 },
-              }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-            >
-              <h3 className="text-2xl font-bold text-[#0A2351] mb-3 group-hover:text-[#FDB827] transition-colors">
-                Pitching
-              </h3>
-              <p className="text-[#0A2351] opacity-90 leading-relaxed">
-                Focused on command, velocity development, and arm health. We
-                build efficient, repeatable movements using video breakdown and
-                modern training concepts.
-              </p>
-            </motion.div>
-          </motion.div>
-        </motion.div>
-      </section>
-    </>
+      {/* === CTA === */}
+      <motion.div
+        className="mt-16 max-w-xl bg-white rounded-xl p-6 shadow-md border-2 border-[#FDB827]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.8 }}
+      >
+        <h3 className="text-2xl font-semibold text-[#0A2351] mb-2">
+          Schedule a Hitting Session
+        </h3>
+        <p className="text-[#0A2351] opacity-90 mb-4">
+          Private and small-group training available. Sessions are tailored to
+          each athlete’s age, level, and mechanical profile — blending modern
+          movement work with in-game approach and situational awareness.
+        </p>
+        <a
+          href="/contact"
+          className="inline-block bg-[#0A2351] text-[#FDB827] font-semibold px-6 py-2 rounded-md shadow-md hover:bg-[#FDB827] hover:text-[#0A2351] hover:shadow-[0_0_15px_#FDB82790] transition-all"
+        >
+          Book Now
+        </a>
+      </motion.div>
+    </section>
   );
 }

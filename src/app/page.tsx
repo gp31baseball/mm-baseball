@@ -48,7 +48,7 @@ export default function Home() {
                 modern training concepts.
               </p>
               <Link
-                href="/programs#pitching"
+                href="/pitching" // ✅ corrected route
                 className="bg-[#0A2351] text-[#FDB827] font-semibold px-6 py-2 rounded-md shadow-md hover:bg-[#FDB827] hover:text-[#0A2351] hover:shadow-[0_0_15px_#FDB82790] transition-all"
               >
                 Learn More
