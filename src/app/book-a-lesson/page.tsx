@@ -1,7 +1,7 @@
 ﻿"use client";
 import { motion } from "framer-motion";
 
-export default function BookaLessonPage() {
+export default function BookALessonPage() {
   return (
     <section className="min-h-screen bg-gradient-to-b from-[#42B3E0] to-[#2095C6] py-20 px-6 flex flex-col items-center text-center">
       <motion.h1
@@ -19,10 +19,10 @@ export default function BookaLessonPage() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.8 }}
       >
-        This page is currently under construction.
+        Online lesson booking is currently under construction.
         <br />
         <span className="font-semibold text-[#FDB827]">
-          Coming Soon - content for this section will be added soon.
+          Coming Soon — you’ll be able to schedule your private training sessions directly from this page.
         </span>
       </motion.p>
 
@@ -32,11 +32,14 @@ export default function BookaLessonPage() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.8 }}
       >
+        <p className="text-[#0A2351] opacity-90 mb-4">
+          For now, please reach out through our contact page or social media to set up your next session.
+        </p>
         <a
-          href="/"
+          href="/contact"
           className="inline-block bg-[#0A2351] text-[#FDB827] font-semibold px-6 py-2 rounded-md shadow-md hover:bg-[#FDB827] hover:text-[#0A2351] hover:shadow-[0_0_15px_#FDB82790] transition-all"
         >
-          Back to Home
+          Go to Contact
         </a>
       </motion.div>
     </section>
