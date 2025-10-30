@@ -62,8 +62,18 @@
         */}
       </div>
 
-      <div className="mt-12 border-t border-[#FDB827]/40 pt-6 text-sm opacity-80">
+      {/* === Footer Bottom Section with FortyOneBuilt Link === */}
+      <div className="mt-12 border-t border-[#FDB827]/40 pt-6 text-sm opacity-80 flex flex-col md:flex-row items-center justify-center gap-2">
         <p>MM Baseball © {new Date().getFullYear()} • Train with Purpose</p>
+        <span className="hidden md:inline text-[#FDB827]">|</span>
+        <a
+          href="https://www.fortyonebuilt.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-[#FDB827] hover:text-white transition-colors duration-300"
+        >
+          Built by FortyOne
+        </a>
       </div>
     </section>
   );
