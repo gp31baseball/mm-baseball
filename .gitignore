@@ -40,7 +40,11 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# Ignore everything in videos except .mov and .mp4
 public/videos/*
+!public/videos/*.mov
+!public/videos/*.mp4
+
 
 
 
