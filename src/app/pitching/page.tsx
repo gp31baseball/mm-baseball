@@ -8,6 +8,7 @@ import {
   HeartPulse,
   Target,
   Brain,
+  Star,
 } from "lucide-react";
 
 export default function PitchingPage() {
@@ -54,16 +55,18 @@ export default function PitchingPage() {
     {
       name: "Starter",
       details: "1-on-1 45-min mechanical session with full video analysis.",
+      color: "#CD7F32", // Bronze
     },
     {
       name: "Advanced",
-      details:
-        "Weekly programming + arm-care plan. Includes velocity tracking.",
+      details: "Weekly programming + arm-care plan. Includes velocity tracking.",
+      color: "#C0C0C0", // Silver
     },
     {
       name: "Elite",
       details:
         "Full-season development track. Custom workload plan, bullpen feedback, and in-season data monitoring.",
+      color: "#FDB827", // Gold
     },
   ];
 
@@ -80,7 +83,7 @@ export default function PitchingPage() {
       </motion.h1>
 
       <motion.p
-        className="text-[#0A2351]/90 text-lg max-w-2xl mx-auto mb-12"
+        className="text-[#0A2351]/90 text-lg max-w-2xl mx-auto mb-12 leading-relaxed"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.8 }}
@@ -91,7 +94,7 @@ export default function PitchingPage() {
 
       {/* === SIX PILLARS GRID === */}
       <motion.div
-        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-16"
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -122,60 +125,57 @@ export default function PitchingPage() {
         })}
       </motion.div>
 
- {/* === THE MAYSEY APPROACH FEATURE (POLISHED) === */}
-<motion.div
-  className="maysey-feature relative overflow-hidden max-w-5xl mx-auto mb-24 rounded-2xl border-2 border-[#FDB827]/40 bg-gradient-to-r from-white/90 to-[#F8F7F2] shadow-lg backdrop-blur-md flex flex-col md:flex-row transition-all duration-500 hover:shadow-[0_0_40px_rgba(253,184,39,0.25)]"
-  initial={{ opacity: 0, y: 30 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 1 }}
->
-  {/* Left Gold Accent Column */}
-  <div className="md:w-1/3 relative bg-[#FDB827]/90 flex flex-col justify-center items-center text-[#0A2351] p-8 overflow-hidden">
-    {/* Light sweep animation overlay */}
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 animate-lightSweep" />
-    <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-display uppercase mb-3 drop-shadow-[0_2px_2px_rgba(10,35,81,0.3)]">
-      The Maysey
-      <br />
-      Approach
-    </h2>
-    <div className="brand-divider mt-2 mb-4 animate-dividerGlow" />
-    <p className="text-sm font-semibold italic text-[#0A2351]/90">
-      “Train to repeat excellence.”
-    </p>
-  </div>
+      {/* === THE MAYSEY APPROACH FEATURE (POLISHED) === */}
+      <motion.div
+        className="maysey-feature relative overflow-hidden max-w-5xl mx-auto mb-24 rounded-2xl border-2 border-[#FDB827]/40 bg-gradient-to-r from-white/90 to-[#F8F7F2] shadow-lg backdrop-blur-md flex flex-col md:flex-row transition-all duration-500 hover:shadow-[0_0_40px_rgba(253,184,39,0.25)]"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        {/* Left Gold Accent Column */}
+        <div className="md:w-1/3 relative bg-[#FDB827]/90 flex flex-col justify-center items-center text-[#0A2351] p-8 overflow-hidden">
+          {/* Light sweep animation overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/40 to-transparent opacity-0 animate-lightSweep" />
+          <h2 className="text-3xl md:text-4xl font-extrabold tracking-tight font-display uppercase mb-3 drop-shadow-[0_2px_2px_rgba(10,35,81,0.3)]">
+            The Maysey
+            <br />
+            Approach
+          </h2>
+          <div className="brand-divider mt-2 mb-4 animate-dividerGlow" />
+          <p className="text-sm font-semibold italic text-[#0A2351]/90">
+            “Train to repeat excellence.”
+          </p>
+        </div>
 
-  {/* Right Content Section */}
-<div className="md:w-2/3 relative p-10 text-left flex flex-col justify-center overflow-hidden">
-  {/* Faint baseball stitching texture */}
-<div className="absolute inset-0 bg-[url('/images/stitches-light.png')] bg-repeat bg-center bg-[length:300px_300px] opacity-[0.12] z-0 mix-blend-multiply animate-stitchesDrift" />
+        {/* Right Content Section */}
+        <div className="md:w-2/3 relative p-10 text-left flex flex-col justify-center overflow-hidden">
+          {/* Faint baseball stitching texture */}
+          <div className="absolute inset-0 bg-[url('/images/stitches-light.png')] bg-repeat bg-center bg-[length:300px_300px] opacity-[0.12] z-0 mix-blend-multiply animate-stitchesDrift" />
 
+          {/* Text content */}
+          <div className="relative z-10">
+            <p className="text-[#0A2351]/90 leading-relaxed mb-4">
+              The Maysey Approach blends time-tested pitching fundamentals with
+              modern, data-driven precision. Each athlete receives detailed
+              movement assessments and high-speed video feedback to develop
+              mechanical consistency and individualized cues. The goal is
+              simple — build pitchers who can feel and repeat their best
+              delivery.
+            </p>
 
+            <p className="text-[#0A2351]/90 leading-relaxed">
+              Every session connects mechanics, tempo, and mindset. By linking
+              technique with confidence and discipline, the program develops
+              durable, efficient pitchers who perform under pressure with
+              conviction.
+            </p>
 
-  {/* Text content */}
-  <div className="relative z-10">
-    <p className="text-[#0A2351]/90 leading-relaxed mb-4">
-      The Maysey Approach blends time-tested pitching fundamentals with
-      modern, data-driven precision. Each athlete receives detailed movement
-      assessments and high-speed video feedback to develop mechanical
-      consistency and individualized cues. The goal is simple — build pitchers
-      who can feel and repeat their best delivery.
-    </p>
-
-    <p className="text-[#0A2351]/90 leading-relaxed">
-      Every session connects mechanics, tempo, and mindset. By linking
-      technique with confidence and discipline, the program develops durable,
-      efficient pitchers who perform under pressure with conviction.
-    </p>
-
-    <p className="mt-6 text-[#0A2351]/70 italic font-semibold self-end">
-      “Precision. Consistency. Confidence.”
-    </p>
-  </div>
-</div>
-
-</motion.div>
-
-
+            <p className="mt-6 text-[#0A2351]/70 italic font-semibold self-end">
+              “Precision. Consistency. Confidence.”
+            </p>
+          </div>
+        </div>
+      </motion.div>
 
       {/* === PROGRAM TIERS === */}
       <motion.div
@@ -187,10 +187,20 @@ export default function PitchingPage() {
         {tiers.map((tier, i) => (
           <motion.div
             key={i}
-            className="bg-[#0A2351]/90 border border-[#FDB827]/40 text-[#FDB827] rounded-xl p-6 shadow-md hover:shadow-[0_0_20px_rgba(253,184,39,0.4)] transition-all"
+            className="relative bg-[#0A2351]/90 border border-[#FDB827]/40 text-[#FDB827] rounded-xl p-6 shadow-md hover:shadow-[0_0_25px_rgba(253,184,39,0.45)] transition-all hover:scale-105"
             whileHover={{ scale: 1.05 }}
           >
-            <h3 className="text-2xl font-bold mb-3">{tier.name}</h3>
+            {/* Star Icon */}
+            <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-[#0A2351] rounded-full p-2 border-2 border-[#FDB827]/40">
+              <Star
+                className="w-6 h-6 tier-star transition-all duration-500"
+                color={tier.color}
+                strokeWidth={2}
+                fill={tier.color}
+              />
+            </div>
+
+            <h3 className="text-2xl font-bold mt-4 mb-3">{tier.name}</h3>
             <p className="text-sm text-[#F2CB70]/90 leading-relaxed mb-4">
               {tier.details}
             </p>
