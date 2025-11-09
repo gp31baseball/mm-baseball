@@ -1,38 +1,42 @@
 ﻿"use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-gradient-to-r from-[#0A2351] to-[#123c7c] backdrop-blur text-[#FDB827] z-50 px-6 py-4 flex justify-between items-center shadow-lg transition-all duration-500">
-      {/* Left: Animated Logo + Title */}
-      <motion.div
-        className="flex items-center gap-2 cursor-pointer"
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-      >
-        <motion.img
-          src="/images/mm-logo.png"
-          alt="MM Logo"
-          className="h-9 w-auto object-contain drop-shadow-[0_0_6px_#FDB82790] rounded"
-          whileHover={{
-            scale: 1.1,
-            rotate: 3,
-            filter: "drop-shadow(0 0 12px #FDB827)",
-          }}
-          transition={{ type: "spring", stiffness: 200, damping: 10 }}
-        />
-        <motion.span
-          className="text-xl font-bold tracking-wide"
-          whileHover={{ textShadow: "0px 0px 8px #FDB827" }}
+      {/* 🔹 Logo + Title */}
+      {mounted && (
+        <motion.div
+          className="flex items-center gap-2 cursor-pointer"
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
         >
-          MM Baseball
-        </motion.span>
-      </motion.div>
+          <motion.img
+            src="/images/mm-logo.png"
+            alt="MM Logo"
+            className="h-9 w-auto object-contain drop-shadow-[0_0_6px_#FDB82790] rounded"
+            whileHover={{
+              scale: 1.1,
+              rotate: 3,
+              filter: "drop-shadow(0 0 12px #FDB827)",
+            }}
+            transition={{ type: "spring", stiffness: 200, damping: 10 }}
+          />
+          <motion.span
+            className="text-xl font-bold tracking-wide"
+            whileHover={{ textShadow: "0px 0px 8px #FDB827" }}
+          >
+            MM Baseball
+          </motion.span>
+        </motion.div>
+      )}
 
-      {/* Desktop Links */}
+      {/* 🔹 Desktop Links */}
       <div className="hidden md:flex gap-8 font-semibold">
         {["Home", "Programs", "Contact"].map((link) => (
           <a
@@ -43,15 +47,16 @@ export default function Navbar() {
             <span className="transition-colors duration-300 group-hover:text-white">
               {link}
             </span>
+            {/* 🔸 Hydration-safe underline */}
             <span
-              className="absolute left-0 -bottom-1 w-0 h-[2px] bg-[#FDB827] rounded-full 
-              group-hover:w-full transition-all duration-300 group-hover:shadow-[0_0_8px_#FDB827]"
-            ></span>
+              className="absolute left-0 -bottom-1 h-[2px] bg-[#FDB827] rounded-full transition-all duration-300 ease-out group-hover:w-full group-hover:shadow-[0_0_8px_#FDB827]"
+              style={{ width: "0%" }}
+            />
           </a>
         ))}
       </div>
 
-      {/* Mobile Menu Button */}
+      {/* 🔹 Mobile Menu Button */}
       <button
         className="md:hidden text-2xl hover:text-white"
         onClick={() => setOpen(!open)}
@@ -60,8 +65,8 @@ export default function Navbar() {
         ☰
       </button>
 
-      {/* Mobile Dropdown */}
-      {open && (
+      {/* 🔹 Mobile Dropdown */}
+      {mounted && open && (
         <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
