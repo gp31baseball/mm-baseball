@@ -1,5 +1,6 @@
 ﻿"use client";
 import { motion } from "framer-motion";
+import ContactForm from "../../components/ContactForm";
 
 export default function ContactPage() {
   return (
@@ -19,29 +20,20 @@ export default function ContactPage() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3, duration: 0.8 }}
       >
-        This page is currently under construction.
-        <br />
-        <span className="font-semibold text-[#FDB827]">
-          Coming Soon — we’ll have a direct contact form and staff directory here.
-        </span>
+        Use this form to reach out about training availability, video breakdowns,
+        or tryout prep. Coach Matt reviews each message personally and works with
+        a limited number of players.
       </motion.p>
 
       <motion.div
-        className="mt-16 max-w-md bg-white rounded-xl p-6 shadow-md border-2 border-[#FDB827]"
+        className="mt-16 w-full max-w-md bg-white rounded-xl p-6 shadow-md border-2 border-[#FDB827]"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.6, duration: 0.8 }}
       >
-        <p className="text-[#0A2351] opacity-90 mb-4">
-          For now, please reach out through our social channels or team contacts.
-        </p>
-        <a
-          href="/"
-          className="inline-block bg-[#0A2351] text-[#FDB827] font-semibold px-6 py-2 rounded-md shadow-md hover:bg-[#FDB827] hover:text-[#0A2351] hover:shadow-[0_0_15px_#FDB82790] transition-all"
-        >
-          Back to Home
-        </a>
+        <ContactForm />
       </motion.div>
     </section>
   );
 }
+

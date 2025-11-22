@@ -14,58 +14,36 @@
           start building your game.
         </p>
 
-        {/* Placeholder text while waiting on final contact info */}
-        <div className="text-lg font-medium opacity-90 max-w-xl mx-auto bg-[#0F2B6E]/40 rounded-xl py-6 px-6 shadow-inner border border-[#FDB827]/40 mb-10">
-          <p className="text-[#FDB827] font-semibold mb-2">
-            Contact Information Coming Soon
-          </p>
-          <p className="text-gray-200">
-            For now, please reach out directly through your MM Baseball coach or
-            staff member.
-          </p>
+        {/* ⭐ Clean Contact CTA */}
+        <div className="mt-6 mb-10">
+          <a
+            href="/contact"
+            className="inline-block bg-[#FDB827] text-[#0A2351] font-semibold px-6 py-3 rounded-md shadow-md
+            hover:bg-[#0A2351] hover:text-[#FDB827] hover:shadow-[0_0_15px_#FDB82790] transition-all"
+          >
+            Contact Coach Matt
+          </a>
         </div>
 
         {/* === Meet Matt button === */}
         <div className="mt-6">
           <a
             href="/about-matt"
-            className="inline-block bg-[#FDB827] text-[#0A2351] font-semibold px-6 py-2 rounded-md shadow-md hover:bg-[#0A2351] hover:text-[#FDB827] hover:shadow-[0_0_15px_#FDB82790] transition-all"
+            className="inline-block bg-[#FDB827] text-[#0A2351] font-semibold px-6 py-2 rounded-md shadow-md 
+            hover:bg-[#0A2351] hover:text-[#FDB827] hover:shadow-[0_0_15px_#FDB82790] transition-all"
           >
             Meet Matt
           </a>
         </div>
-
-        {/* 
-        --- Original links (saved for later use) ---
-        <div className="flex flex-col md:flex-row justify-center gap-6 text-lg font-medium mt-6">
-          <a
-            href="mailto:info@mm-baseball.com"
-            className="hover:text-[#FDB827] transition-colors duration-300"
-          >
-            📧 info@mm-baseball.com
-          </a>
-          <a
-            href="tel:+15555555555"
-            className="hover:text-[#FDB827] transition-colors duration-300"
-          >
-            📞 (555) 555-5555
-          </a>
-          <a
-            href="https://www.instagram.com/mm_baseball"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:text-[#FDB827] transition-colors duration-300"
-          >
-            📸 @mm_baseball
-          </a>
-        </div>
-        */}
       </div>
 
-      {/* === Footer Bottom Section with FortyOneBuilt Link === */}
-      <div className="mt-12 border-t border-[#FDB827]/40 pt-6 text-sm opacity-80 flex flex-col md:flex-row items-center justify-center gap-2">
+      {/* === Footer Bottom Section with FortyOneBuilt Link + Coach Login === */}
+      <div className="mt-12 border-t border-[#FDB827]/40 pt-6 text-sm opacity-80 flex flex-col md:flex-row items-center justify-center gap-3">
+
         <p>MM Baseball © {new Date().getFullYear()} • Train with Purpose</p>
+
         <span className="hidden md:inline text-[#FDB827]">|</span>
+
         <a
           href="https://www.fortyonebuilt.com"
           target="_blank"
@@ -73,6 +51,16 @@
           className="text-[#FDB827] hover:text-white transition-colors duration-300"
         >
           Built by FortyOne
+        </a>
+
+        <span className="hidden md:inline text-[#FDB827]">|</span>
+
+        {/* ⭐ Coach Login — subtle, professional, easy for Matt to find */}
+        <a
+          href="/coach"
+          className="text-[#FDB827]/70 hover:text-[#FDB827] text-xs md:text-sm transition-colors duration-300"
+        >
+          Coach Login
         </a>
       </div>
     </section>

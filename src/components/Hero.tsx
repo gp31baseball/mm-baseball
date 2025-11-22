@@ -13,8 +13,10 @@ const bebas = Bebas_Neue({
 
 export default function Hero() {
   const taglineWords = ["Hitting", "Player Development", "Pitching"];
+
+  // ⭐ Updated CTAs
   const buttons = [
-    { label: "Book a Lesson", href: "/book-a-lesson" },
+    { label: "Contact Coach Matt", href: "/contact" },
     { label: "View Programs", href: "/programs" },
   ];
 

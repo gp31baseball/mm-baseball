@@ -9,6 +9,7 @@ export default function Navbar() {
 
   return (
     <nav className="fixed top-0 left-0 w-full bg-gradient-to-r from-[#0A2351] to-[#123c7c] backdrop-blur text-[#FDB827] z-50 px-6 py-4 flex justify-between items-center shadow-lg transition-all duration-500">
+      
       {/* 🔹 Logo + Title */}
       {mounted && (
         <motion.div
@@ -37,8 +38,9 @@ export default function Navbar() {
       )}
 
       {/* 🔹 Desktop Links */}
-      <div className="hidden md:flex gap-8 font-semibold">
-        {["Home", "Programs", "Contact"].map((link) => (
+      <div className="hidden md:flex gap-8 font-semibold items-center">
+        {/* Normal links */}
+        {["Home", "Programs"].map((link) => (
           <a
             key={link}
             href={link === "Home" ? "/" : `/${link.toLowerCase()}`}
@@ -47,13 +49,21 @@ export default function Navbar() {
             <span className="transition-colors duration-300 group-hover:text-white">
               {link}
             </span>
-            {/* 🔸 Hydration-safe underline */}
+
             <span
               className="absolute left-0 -bottom-1 h-[2px] bg-[#FDB827] rounded-full transition-all duration-300 ease-out group-hover:w-full group-hover:shadow-[0_0_8px_#FDB827]"
               style={{ width: "0%" }}
             />
           </a>
         ))}
+
+        {/* ⭐ CLEAN CTA BUTTON FOR CONTACT */}
+        <a
+          href="/contact"
+          className="px-4 py-1 rounded-md border border-[#FDB827] text-[#FDB827] hover:bg-[#FDB827] hover:text-[#0A2351] transition-colors duration-300 font-semibold"
+        >
+          Contact
+        </a>
       </div>
 
       {/* 🔹 Mobile Menu Button */}
