@@ -34,16 +34,18 @@ export async function POST(req: Request) {
       message,
     };
 
-    // ---- FIX: Ensure existing is always an array ----
-    let existing = await kv.get("messages");
+    // ---- FIX: Get KV safely ----
+    let existing: any = await kv.get("messages");
 
+    // ---- FIX: Force it to be an array ----
     if (!Array.isArray(existing)) {
       existing = [];
     }
 
-    // Add newest first
+    // ---- Add newest first ----
     existing.unshift(entry);
 
+    // ---- Save ----
     await kv.set("messages", existing);
 
     return NextResponse.json({ ok: true }, { status: 200 });
