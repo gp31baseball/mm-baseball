@@ -36,16 +36,18 @@ export async function POST(req: Request) {
       message,
     };
 
-    // --- Load existing messages or init empty ---
-    const existing = (await kv.get("messages")) || [];
+    // --- Load existing messages ---
+    const existing = (await kv.get("messages")) as any;
+
+    // --- Ensure the data is always an array ---
+    const list = Array.isArray(existing) ? existing : [];
 
     // --- Add newest first ---
-    existing.unshift(entry);
+    list.unshift(entry);
 
     // --- Save back to KV ---
-    await kv.set("messages", existing);
+    await kv.set("messages", list);
 
-    // --- Success response ---
     return NextResponse.json({ ok: true });
   } catch (err) {
     console.error("KV contact API error:", err);
