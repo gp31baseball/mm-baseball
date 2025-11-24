@@ -23,7 +23,7 @@ export default function ContactForm() {
       message: formData.get("message") as string | null,
     };
 
-    // Front-end required validation
+    // Basic required field validation
     if (!payload.parentName || !payload.email || !payload.message) {
       setStatus("error");
       setError("Please fill in parent name, email, and a message.");
@@ -37,22 +37,21 @@ export default function ContactForm() {
         body: JSON.stringify(payload),
       });
 
-      // Always attempt JSON so we can read `success`
+      // Always attempt JSON parsing so we can detect success
       const data = await res.json().catch(() => ({}));
 
-      // Real success = backend returned success: true
       if (data.success === true) {
         setStatus("success");
+        setError(null);   // ← IMPORTANT: clears stale red error
         (e.currentTarget as HTMLFormElement).reset();
         return;
       }
 
-      // Backend validation error or failure (no more fake network errors)
+      // Backend returned error payload
       setStatus("error");
       setError(data.error || "Please fill out all required fields.");
     } catch (err) {
       console.error(err);
-      // TRUE network error only
       setStatus("error");
       setError("Network error. Please try again.");
     }
