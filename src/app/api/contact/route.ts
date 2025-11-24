@@ -1,6 +1,5 @@
 import { NextResponse } from "next/server";
-import path from "path";
-import { promises as fs } from "fs";
+import { kv } from "@vercel/kv";
 
 export async function POST(req: Request) {
   try {
@@ -14,17 +13,9 @@ export async function POST(req: Request) {
       age,
       team,
       message,
-    } = body as {
-      playerName?: string;
-      parentName?: string;
-      email?: string;
-      phone?: string;
-      age?: string;
-      team?: string;
-      message?: string;
-    };
+    } = body;
 
-    // Basic validation
+    // --- Basic validation ---
     if (!parentName || !email || !message) {
       return NextResponse.json(
         { error: "Missing required fields." },
@@ -32,20 +23,7 @@ export async function POST(req: Request) {
       );
     }
 
-    // Path to JSON message storage
-    const filePath = path.join(process.cwd(), "data", "messages.json");
-
-    // Load or initialize
-    let existing = [];
-    try {
-      const raw = await fs.readFile(filePath, "utf8");
-      existing = JSON.parse(raw || "[]");
-    } catch (err) {
-      // If file doesn't exist, create a fresh blank array
-      existing = [];
-    }
-
-    // Build new entry
+    // --- Build new entry ---
     const entry = {
       id: crypto.randomUUID(),
       ts: Date.now(),
@@ -58,16 +36,19 @@ export async function POST(req: Request) {
       message,
     };
 
-    // Prepend new message to the list
+    // --- Load existing messages or init empty ---
+    const existing = (await kv.get("messages")) || [];
+
+    // --- Add newest first ---
     existing.unshift(entry);
 
-    // Save back to JSON
-    await fs.writeFile(filePath, JSON.stringify(existing, null, 2));
+    // --- Save back to KV ---
+    await kv.set("messages", existing);
 
-    // Return success
+    // --- Success response ---
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error("Contact API error:", err);
+    console.error("KV contact API error:", err);
     return NextResponse.json(
       { error: "Server error. Please try again later." },
       { status: 500 }

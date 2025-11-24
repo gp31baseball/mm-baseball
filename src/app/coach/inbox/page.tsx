@@ -1,29 +1,23 @@
-import path from "path";
-import { promises as fs } from "fs";
+import { kv } from "@vercel/kv";
 
-async function loadMessages() {
-  const filePath = path.join(process.cwd(), "data", "messages.json");
-  try {
-    const raw = await fs.readFile(filePath, "utf8");
-    return JSON.parse(raw || "[]");
-  } catch {
-    return [];
-  }
-}
-
-async function loadCounters() {
-  const filePath = path.join(process.cwd(), "data", "counter.json");
-  try {
-    const raw = await fs.readFile(filePath, "utf8");
-    return JSON.parse(raw || "{ \"visits\": 0 }");
-  } catch {
-    return { visits: 0 };
-  }
+interface Message {
+  id: string;
+  ts: number;
+  parentName: string;
+  playerName: string;
+  email: string;
+  phone: string;
+  age: string;
+  team: string;
+  message: string;
 }
 
 export default async function InboxPage() {
-  const messages = await loadMessages();
-  const counters = await loadCounters();
+  // --- Load messages from KV ---
+  const messages = (await kv.get<Message[]>("messages")) || [];
+
+  // --- Load counters from KV ---
+  const counters = (await kv.get<{ visits: number }>("counters")) || { visits: 0 };
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
@@ -43,7 +37,7 @@ export default async function InboxPage() {
           <p className="text-gray-600">No messages yet.</p>
         )}
 
-        {messages.map((msg: any) => (
+        {messages.map((msg) => (
           <div
             key={msg.id}
             className="bg-white p-4 rounded-lg shadow border border-gray-300"
