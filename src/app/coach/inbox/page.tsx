@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { kv } from "@vercel/kv";
 
 interface Message {
@@ -17,7 +19,8 @@ export default async function InboxPage() {
   const messages = (await kv.get<Message[]>("messages")) || [];
 
   // --- Load counters from KV ---
-  const counters = (await kv.get<{ visits: number }>("counters")) || { visits: 0 };
+  const counters =
+    (await kv.get<{ visits: number }>("counters")) || { visits: 0 };
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
@@ -46,12 +49,24 @@ export default async function InboxPage() {
               {new Date(msg.ts).toLocaleString()}
             </p>
 
-            <p><strong>Parent:</strong> {msg.parentName}</p>
-            <p><strong>Player:</strong> {msg.playerName || "-"}</p>
-            <p><strong>Email:</strong> {msg.email}</p>
-            <p><strong>Phone:</strong> {msg.phone || "-"}</p>
-            <p><strong>Age:</strong> {msg.age || "-"}</p>
-            <p><strong>Team:</strong> {msg.team || "-"}</p>
+            <p>
+              <strong>Parent:</strong> {msg.parentName}
+            </p>
+            <p>
+              <strong>Player:</strong> {msg.playerName || "-"}
+            </p>
+            <p>
+              <strong>Email:</strong> {msg.email}
+            </p>
+            <p>
+              <strong>Phone:</strong> {msg.phone || "-"}
+            </p>
+            <p>
+              <strong>Age:</strong> {msg.age || "-"}
+            </p>
+            <p>
+              <strong>Team:</strong> {msg.team || "-"}
+            </p>
 
             <p className="mt-3 whitespace-pre-line">
               <strong>Message:</strong> {msg.message}
