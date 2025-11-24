@@ -128,9 +128,7 @@ export default function ContactForm() {
         </p>
       )}
 
-      {status === "error" && error && (
-        <p className="text-xs text-red-700 mt-1">{error}</p>
-      )}
+     
     </form>
   );
 }
