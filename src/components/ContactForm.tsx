@@ -23,6 +23,7 @@ export default function ContactForm() {
       message: formData.get("message") as string | null,
     };
 
+    // Front-end required validation
     if (!payload.parentName || !payload.email || !payload.message) {
       setStatus("error");
       setError("Please fill in parent name, email, and a message.");
@@ -36,16 +37,22 @@ export default function ContactForm() {
         body: JSON.stringify(payload),
       });
 
-      if (res.ok) {
+      // Always attempt JSON so we can read `success`
+      const data = await res.json().catch(() => ({}));
+
+      // Real success = backend returned success: true
+      if (data.success === true) {
         setStatus("success");
         (e.currentTarget as HTMLFormElement).reset();
-      } else {
-        const data = await res.json().catch(() => null);
-        setStatus("error");
-        setError(data?.error || "Something went wrong. Please try again.");
+        return;
       }
+
+      // Backend validation error or failure (no more fake network errors)
+      setStatus("error");
+      setError(data.error || "Please fill out all required fields.");
     } catch (err) {
       console.error(err);
+      // TRUE network error only
       setStatus("error");
       setError("Network error. Please try again.");
     }
@@ -121,6 +128,7 @@ export default function ContactForm() {
           Message sent. Coach Matt will review and reach out if it’s a fit.
         </p>
       )}
+
       {status === "error" && error && (
         <p className="text-xs text-red-700 mt-1">{error}</p>
       )}
