@@ -15,7 +15,6 @@ export async function POST(req: Request) {
       message,
     } = body;
 
-    // --- Basic validation ---
     if (!parentName || !email || !message) {
       return NextResponse.json(
         { error: "Missing required fields." },
@@ -23,7 +22,6 @@ export async function POST(req: Request) {
       );
     }
 
-    // --- Build new entry ---
     const entry = {
       id: crypto.randomUUID(),
       ts: Date.now(),
@@ -36,19 +34,19 @@ export async function POST(req: Request) {
       message,
     };
 
-    // --- Load existing messages ---
-    const existing = (await kv.get("messages")) as any;
+    // ---- FIX: Ensure existing is always an array ----
+    let existing = await kv.get("messages");
 
-    // --- Ensure the data is always an array ---
-    const list = Array.isArray(existing) ? existing : [];
+    if (!Array.isArray(existing)) {
+      existing = [];
+    }
 
-    // --- Add newest first ---
-    list.unshift(entry);
+    // Add newest first
+    existing.unshift(entry);
 
-    // --- Save back to KV ---
-    await kv.set("messages", list);
+    await kv.set("messages", existing);
 
-    return NextResponse.json({ ok: true });
+    return NextResponse.json({ ok: true }, { status: 200 });
   } catch (err) {
     console.error("KV contact API error:", err);
     return NextResponse.json(
