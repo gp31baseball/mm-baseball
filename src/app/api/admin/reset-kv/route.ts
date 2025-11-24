@@ -1,19 +1,58 @@
 import { NextResponse } from "next/server";
 import { kv } from "@vercel/kv";
 
-export async function GET() {
+export async function POST(req: Request) {
   try {
-    await kv.set("messages", []);
-    await kv.set("counters", { visits: 0 });
+    const body = await req.json();
 
-    return NextResponse.json({
-      ok: true,
-      message: "KV reset successful.",
-    });
+    const {
+      playerName,
+      parentName,
+      email,
+      phone,
+      age,
+      team,
+      message,
+    } = body;
+
+    if (!parentName || !email || !message) {
+      return NextResponse.json(
+        { error: "Missing required fields." },
+        { status: 400 }
+      );
+    }
+
+    const entry = {
+      id: crypto.randomUUID(),
+      ts: Date.now(),
+      playerName: playerName || "",
+      parentName,
+      email,
+      phone: phone || "",
+      age: age || "",
+      team: team || "",
+      message,
+    };
+
+    // ---- FIX: Get KV safely ----
+    let existing: any = await kv.get("messages");
+
+    // ---- FIX: Force it to be an array ----
+    if (!Array.isArray(existing)) {
+      existing = [];
+    }
+
+    // ---- Add newest first ----
+    existing.unshift(entry);
+
+    // ---- Save ----
+    await kv.set("messages", existing);
+
+    return NextResponse.json({ ok: true }, { status: 200 });
   } catch (err) {
-    console.error("KV reset failed", err);
+    console.error("KV contact API error:", err);
     return NextResponse.json(
-      { ok: false, error: "KV reset failed" },
+      { error: "Server error. Please try again later." },
       { status: 500 }
     );
   }
